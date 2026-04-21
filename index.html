@@ -3,37 +3,473 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - Brick Shot</title>
+  <title>개인정보처리방침 - Brick Shot</title>
   <style>
-    body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #333; }
-    h1 { font-size: 1.6em; }
-    h2 { font-size: 1.1em; margin-top: 2em; }
-    a { color: #0066cc; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif; background: #f7f8fa; color: #222; }
+    .container { max-width: 760px; margin: 0 auto; padding: 48px 24px 100px; }
+    header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; gap: 16px; flex-wrap: wrap; }
+    .header-left h1 { font-size: 1.75em; font-weight: 800; letter-spacing: -0.5px; }
+    .header-left p { margin-top: 6px; color: #777; font-size: 0.88em; }
+    .lang-toggle { display: flex; border: 1.5px solid #ddd; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+    .lang-toggle button { padding: 7px 16px; border: none; background: #fff; cursor: pointer; font-size: 0.85em; color: #777; font-weight: 500; transition: background 0.15s, color 0.15s; }
+    .lang-toggle button.active { background: #1a1a2e; color: #fff; }
+    .toc { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 20px 24px; margin-bottom: 36px; }
+    .toc h3 { font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 12px; }
+    .toc ol { padding-left: 18px; }
+    .toc li { font-size: 0.88em; line-height: 2; }
+    .toc a { color: #444; text-decoration: none; }
+    .toc a:hover { color: #0066cc; }
+    section { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 28px 28px; margin-bottom: 16px; }
+    h2 { font-size: 1.05em; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .num { background: #1a1a2e; color: #fff; font-size: 0.75em; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .badge { display: inline-block; background: #eef3ff; color: #3355cc; font-size: 0.72em; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+    p { font-size: 0.93em; line-height: 1.85; color: #333; margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 20px; margin-bottom: 10px; }
+    li { font-size: 0.93em; line-height: 1.85; color: #333; margin-bottom: 2px; }
+    a { color: #0055bb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin-top: 12px; border-radius: 8px; overflow: hidden; }
+    th { background: #f2f4f7; font-weight: 600; padding: 10px 14px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+    td { padding: 9px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .highlight-box { background: #f0f4ff; border-left: 3px solid #3355cc; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 0.9em; line-height: 1.7; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 14px 0; }
+    strong { color: #111; }
+    footer { text-align: center; color: #aaa; font-size: 0.82em; margin-top: 40px; }
   </style>
 </head>
 <body>
-  <h1>개인정보처리방침 / Privacy Policy</h1>
-  <p>최종 수정일 / Last updated: April 21, 2026</p>
+<div class="container">
 
-  <h2>1. 수집하는 정보 / Information We Collect</h2>
-  <p>본 앱은 다음 정보를 제3자 서비스를 통해 수집합니다.</p>
-  <ul>
-    <li>광고 ID — Google AdMob을 통한 광고 제공 목적</li>
-    <li>기기 정보 — OS 버전, 기기 모델</li>
-    <li>게임 이용 데이터 — Firebase Analytics (세션 시간, 이벤트)</li>
-  </ul>
+  <header>
+    <div class="header-left">
+      <h1 id="main-title">개인정보처리방침</h1>
+      <p id="main-sub">Brick Shot · Puffchip Games · <span id="updated-date">최종 수정: 2026년 4월 21일</span></p>
+    </div>
+    <div class="lang-toggle">
+      <button class="active" onclick="setLang('ko')">한국어</button>
+      <button onclick="setLang('en')">English</button>
+    </div>
+  </header>
 
-  <h2>2. 제3자 서비스 / Third-Party Services</h2>
-  <ul>
-    <li><a href="https://policies.google.com/privacy">Google AdMob Privacy Policy</a></li>
-    <li><a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a></li>
-  </ul>
+  <!-- TOC -->
+  <div class="toc">
+    <h3 id="toc-label">목차</h3>
+    <ol id="toc-list">
+      <li><a href="#s1" id="toc1">개요 및 적용 범위</a></li>
+      <li><a href="#s2" id="toc2">수집하는 정보</a></li>
+      <li><a href="#s3" id="toc3">정보 수집 방법</a></li>
+      <li><a href="#s4" id="toc4">정보 이용 목적</a></li>
+      <li><a href="#s5" id="toc5">처리의 법적 근거 (GDPR)</a></li>
+      <li><a href="#s6" id="toc6">정보 공유 및 제3자 제공</a></li>
+      <li><a href="#s7" id="toc7">데이터 보유 기간</a></li>
+      <li><a href="#s8" id="toc8">국외 데이터 이전</a></li>
+      <li><a href="#s9" id="toc9">사용자 권리</a></li>
+      <li><a href="#s10" id="toc10">어린이 보호</a></li>
+      <li><a href="#s11" id="toc11">데이터 보안</a></li>
+      <li><a href="#s12" id="toc12">푸시 알림</a></li>
+      <li><a href="#s13" id="toc13">인앱 결제</a></li>
+      <li><a href="#s14" id="toc14">감독 기관 불만 제기</a></li>
+      <li><a href="#s15" id="toc15">방침 변경</a></li>
+      <li><a href="#s16" id="toc16">문의</a></li>
+    </ol>
+  </div>
 
-  <h2>3. 어린이 보호 / Children</h2>
-  <p>본 앱은 만 13세 미만 어린이를 대상으로 하지 않습니다.<br>
-  This app is not directed at children under 13.</p>
+  <!-- S1 -->
+  <section id="s1">
+    <h2><span class="num">01</span> <span id="s1-title">개요 및 적용 범위</span></h2>
+    <p id="s1-p1">Puffchip Games("회사", "저희")는 모바일 게임 <strong>Brick Shot</strong>("앱", "서비스")을 개발 및 운영합니다. 본 개인정보처리방침은 서비스 이용 과정에서 수집되는 개인정보를 어떻게 수집, 이용, 공유, 보관하는지를 설명합니다.</p>
+    <p id="s1-p2">본 방침은 Google Play를 통해 배포되는 Android 버전에 적용됩니다. 서비스를 이용함으로써 본 방침에 동의하는 것으로 간주됩니다.</p>
+    <div class="highlight-box" id="s1-box">본 방침은 GDPR(EU 일반 개인정보 보호 규정), CCPA(캘리포니아 소비자 개인정보 보호법) 및 대한민국 개인정보 보호법을 고려하여 작성되었습니다.</div>
+  </section>
 
-  <h2>4. 문의 / Contact</h2>
-  <p>이메일 / Email: <a href="mailto:puffchipgames.dev@gmail.com">puffchipgames.dev@gmail.com</a></p>
+  <!-- S2 -->
+  <section id="s2">
+    <h2><span class="num">02</span> <span id="s2-title">수집하는 정보</span></h2>
+    <p id="s2-intro">저희는 다음과 같은 정보를 수집합니다. 대부분의 정보는 제3자 서비스(Google AdMob, Firebase)를 통해 자동으로 수집됩니다.</p>
+    <table>
+      <thead>
+        <tr>
+          <th id="s2-th1">데이터 유형</th>
+          <th id="s2-th2">세부 내용</th>
+          <th id="s2-th3">수집 주체</th>
+          <th id="s2-th4">목적</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="s2-r1a"><strong>광고 식별자</strong></td>
+          <td id="s2-r1b">Android 광고 ID (GAID)</td>
+          <td>Google AdMob</td>
+          <td id="s2-r1c">맞춤형 광고 제공</td>
+        </tr>
+        <tr>
+          <td id="s2-r2a"><strong>기기 정보</strong></td>
+          <td id="s2-r2b">OS 버전, 기기 모델, 화면 해상도, 제조사</td>
+          <td>Firebase / AdMob</td>
+          <td id="s2-r2c">광고 최적화, 오류 분석</td>
+        </tr>
+        <tr>
+          <td id="s2-r3a"><strong>네트워크 정보</strong></td>
+          <td id="s2-r3b">IP 주소(국가 수준), 연결 유형(Wi-Fi/모바일)</td>
+          <td>Google AdMob</td>
+          <td id="s2-r3c">광고 지역화</td>
+        </tr>
+        <tr>
+          <td id="s2-r4a"><strong>게임 이용 데이터</strong></td>
+          <td id="s2-r4b">레벨 진행 상황, 세션 시간, 이벤트 로그</td>
+          <td>Firebase Analytics</td>
+          <td id="s2-r4c">서비스 개선, 분석</td>
+        </tr>
+        <tr>
+          <td id="s2-r5a"><strong>앱 성능 데이터</strong></td>
+          <td id="s2-r5b">충돌 로그, 응답 시간</td>
+          <td>Firebase Crashlytics</td>
+          <td id="s2-r5c">버그 수정, 안정성 향상</td>
+        </tr>
+      </tbody>
+    </table>
+    <p id="s2-note" style="margin-top:12px; color:#666; font-size:0.85em;">※ 저희는 이름, 이메일, 전화번호 등 직접 식별 가능한 개인정보를 직접 수집하지 않습니다.</p>
+  </section>
+
+  <!-- S3 -->
+  <section id="s3">
+    <h2><span class="num">03</span> <span id="s3-title">정보 수집 방법</span></h2>
+    <ul id="s3-list">
+      <li id="s3-li1"><strong>자동 수집:</strong> 앱 실행 시 SDK(Firebase, AdMob)가 기기 및 이용 정보를 자동으로 수집합니다.</li>
+      <li id="s3-li2"><strong>광고 상호작용:</strong> 광고 클릭 또는 시청 시 AdMob이 상호작용 데이터를 기록합니다.</li>
+      <li id="s3-li3"><strong>앱 내 구매:</strong> Google Play 결제 시스템을 통해 거래 정보가 처리됩니다. (결제 정보는 Google이 직접 처리하며, 회사는 접근하지 않습니다.)</li>
+    </ul>
+  </section>
+
+  <!-- S4 -->
+  <section id="s4">
+    <h2><span class="num">04</span> <span id="s4-title">정보 이용 목적</span></h2>
+    <ul id="s4-list">
+      <li id="s4-li1"><strong>서비스 제공:</strong> 게임 기능 운영 및 사용자 경험 제공</li>
+      <li id="s4-li2"><strong>광고 제공:</strong> 관련성 높은 광고 표시 (맞춤형 또는 비맞춤형)</li>
+      <li id="s4-li3"><strong>서비스 분석 및 개선:</strong> 이용 패턴 분석, 기능 개선, 버그 수정</li>
+      <li id="s4-li4"><strong>사기 및 부정 행위 방지:</strong> 비정상적 사용 패턴 감지 및 차단</li>
+      <li id="s4-li5"><strong>법적 의무 이행:</strong> 관련 법령에 따른 기록 보존 및 법적 요청 대응</li>
+    </ul>
+  </section>
+
+  <!-- S5 -->
+  <section id="s5">
+    <h2><span class="num">05</span> <span id="s5-title">처리의 법적 근거</span> <span class="badge">GDPR Art. 6</span></h2>
+    <p id="s5-intro">EU/EEA 사용자의 개인정보 처리는 다음의 법적 근거에 기반합니다:</p>
+    <ul id="s5-list">
+      <li id="s5-li1"><strong>동의 (Art. 6(1)(a)):</strong> 앱 첫 실행 시 동의 팝업을 통해 맞춤형 광고(GAID 기반)에 대한 명시적 동의를 수집합니다. 동의는 언제든지 철회할 수 있습니다.</li>
+      <li id="s5-li2"><strong>계약 이행 (Art. 6(1)(b)):</strong> 게임 서비스 제공 및 인앱 구매 처리를 위해 필요한 경우.</li>
+      <li id="s5-li3"><strong>정당한 이익 (Art. 6(1)(f)):</strong> 서비스 보안 유지, 사기 방지, 비맞춤형 광고 제공, 오류 분석. 이 처리는 사용자의 기본권과 균형을 고려하여 수행됩니다.</li>
+      <li id="s5-li4"><strong>법적 의무 이행 (Art. 6(1)(c)):</strong> 관련 법령상 기록 보존 의무.</li>
+    </ul>
+  </section>
+
+  <!-- S6 -->
+  <section id="s6">
+    <h2><span class="num">06</span> <span id="s6-title">정보 공유 및 제3자 제공</span></h2>
+    <p id="s6-p1">저희는 다음의 경우를 제외하고 수집한 정보를 제3자와 공유하지 않습니다:</p>
+    <ul id="s6-list">
+      <li id="s6-li1"><strong>서비스 제공업체:</strong> Google AdMob (광고), Firebase (분석/충돌 보고) — 서비스 운영에 필요한 범위 내에서만 공유</li>
+      <li id="s6-li2"><strong>법적 요청:</strong> 법원 명령, 법령에 따른 요청, 법적 권리 보호를 위해 필요한 경우</li>
+      <li id="s6-li3"><strong>사업 양도:</strong> 합병, 인수, 자산 매각 시 — 사전에 사용자에게 통지합니다</li>
+    </ul>
+    <hr class="divider">
+    <p id="s6-third-title"><strong>제3자 서비스 개인정보처리방침</strong></p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank">Google AdMob 개인정보처리방침</a></li>
+      <li><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase (Google) 개인정보처리방침</a></li>
+      <li><a href="https://play.google.com/about/play-terms/" target="_blank">Google Play 서비스 약관</a></li>
+    </ul>
+  </section>
+
+  <!-- S7 -->
+  <section id="s7">
+    <h2><span class="num">07</span> <span id="s7-title">데이터 보유 기간</span></h2>
+    <p id="s7-intro">개인정보는 처리 목적이 달성되면 지체 없이 삭제합니다. 제3자 서비스의 보유 기간은 해당 서비스의 정책을 따릅니다:</p>
+    <table>
+      <thead>
+        <tr><th id="s7-th1">데이터</th><th id="s7-th2">보유 기간</th><th id="s7-th3">근거</th></tr>
+      </thead>
+      <tbody>
+        <tr><td id="s7-r1a">Firebase Analytics 이벤트</td><td id="s7-r1b">최대 14개월</td><td id="s7-r1c">Google 기본 설정</td></tr>
+        <tr><td id="s7-r2a">Firebase Crashlytics 로그</td><td id="s7-r2b">90일</td><td id="s7-r2c">Google 기본 설정</td></tr>
+        <tr><td id="s7-r3a">AdMob 광고 로그</td><td id="s7-r3b">최대 60일</td><td id="s7-r3c">Google 기본 설정</td></tr>
+        <tr><td id="s7-r4a">앱 내 로컬 저장 데이터</td><td id="s7-r4b">앱 삭제 시 즉시 삭제</td><td id="s7-r4c">기기 내 저장</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- S8 -->
+  <section id="s8">
+    <h2><span class="num">08</span> <span id="s8-title">국외 데이터 이전</span> <span class="badge">GDPR Art. 46</span></h2>
+    <p id="s8-p1">Google AdMob 및 Firebase는 미국을 포함한 다수의 국가에 서버를 운영합니다. 따라서 수집된 정보 일부가 EU/EEA 외부로 전송될 수 있습니다.</p>
+    <p id="s8-p2">Google은 EU 표준계약조항(Standard Contractual Clauses, SCC)을 통해 적절한 데이터 보호 수준을 보장합니다. 자세한 내용은 <a href="https://policies.google.com/privacy/frameworks" target="_blank">Google의 데이터 보호 프레임워크</a>를 확인하세요.</p>
+    <p id="s8-p3">대한민국에서는 「개인정보 보호법」 제28조의8에 따라 국외 이전 사실을 고지합니다. 이전되는 국가는 미국이며, 이전받는 자는 Google LLC입니다.</p>
+  </section>
+
+  <!-- S9 -->
+  <section id="s9">
+    <h2><span class="num">09</span> <span id="s9-title">사용자 권리</span> <span class="badge">GDPR Art. 15–22</span></h2>
+    <p id="s9-intro">EU/EEA에 거주하는 사용자는 다음의 권리를 갖습니다. 권리 행사는 아래 문의처로 요청하시면 <strong>30일 이내</strong> 응답드립니다:</p>
+    <ul id="s9-list">
+      <li id="s9-li1"><strong>열람권 (Art. 15):</strong> 수집된 개인정보의 사본 요청</li>
+      <li id="s9-li2"><strong>정정권 (Art. 16):</strong> 부정확하거나 불완전한 정보의 수정 요청</li>
+      <li id="s9-li3"><strong>삭제권 / 잊힐 권리 (Art. 17):</strong> 특정 조건 하에 개인정보 삭제 요청</li>
+      <li id="s9-li4"><strong>처리 제한권 (Art. 18):</strong> 개인정보 처리를 일시적으로 제한하도록 요청</li>
+      <li id="s9-li5"><strong>이동권 (Art. 20):</strong> 구조화된 형식으로 개인정보 수령 요청</li>
+      <li id="s9-li6"><strong>이의제기권 (Art. 21):</strong> 정당한 이익에 기반한 처리에 대한 이의 제기</li>
+      <li id="s9-li7"><strong>동의 철회권:</strong> 언제든지 동의를 철회할 수 있으며, 철회 이전 처리의 적법성에는 영향을 미치지 않습니다.</li>
+    </ul>
+    <div class="highlight-box" id="s9-box">동의 철회 방법: 기기 설정 → 개인정보 → 광고 → "광고 개인화 선택 해제" 또는 앱 설정 내 광고 동의 재설정 / 또는 이메일 문의</div>
+  </section>
+
+  <!-- S10 -->
+  <section id="s10">
+    <h2><span class="num">10</span> <span id="s10-title">어린이 보호</span></h2>
+    <p id="s10-p1">본 서비스는 만 13세 미만(EU/EEA의 경우 만 16세 미만) 어린이를 대상으로 하지 않습니다. 저희는 어린이로부터 고의로 개인정보를 수집하지 않습니다.</p>
+    <p id="s10-p2">만약 보호자께서 자녀가 본 서비스를 이용하고 있으며 개인정보가 수집되었다고 생각하신다면, 즉시 아래 문의처로 연락해 주십시오. 신속하게 해당 정보를 삭제하겠습니다.</p>
+  </section>
+
+  <!-- S11 -->
+  <section id="s11">
+    <h2><span class="num">11</span> <span id="s11-title">데이터 보안</span></h2>
+    <p id="s11-p1">저희는 수집된 정보를 보호하기 위해 업계 표준의 기술적, 관리적 보안 조치를 적용합니다. 제3자 서비스(Google)는 자체적인 보안 인프라를 통해 데이터를 보호합니다.</p>
+    <p id="s11-p2">그러나 인터넷을 통한 전송이나 전자 저장은 100% 안전을 보장할 수 없습니다. 보안 취약점을 발견하신 경우 즉시 저희에게 알려주시기 바랍니다.</p>
+  </section>
+
+  <!-- S12 -->
+  <section id="s12">
+    <h2><span class="num">12</span> <span id="s12-title">푸시 알림</span></h2>
+    <p id="s12-p1">본 앱은 현재 푸시 알림을 제공하지 않습니다. 추후 알림 기능이 추가될 경우, 기기의 알림 설정을 통해 언제든지 수신을 거부할 수 있습니다.</p>
+  </section>
+
+  <!-- S13 -->
+  <section id="s13">
+    <h2><span class="num">13</span> <span id="s13-title">인앱 결제</span></h2>
+    <p id="s13-p1">본 앱에서 제공하는 인앱 구매는 Google Play 결제 시스템을 통해 처리됩니다. 신용카드 번호 등 결제 정보는 Google이 직접 처리하며, 회사는 해당 정보에 접근하거나 저장하지 않습니다.</p>
+    <p id="s13-p2">구매 내역 및 환불은 Google Play 정책에 따라 처리됩니다.</p>
+  </section>
+
+  <!-- S14 -->
+  <section id="s14">
+    <h2><span class="num">14</span> <span id="s14-title">감독 기관 불만 제기</span> <span class="badge">GDPR Art. 77</span></h2>
+    <p id="s14-p1">EU/EEA에 거주하는 사용자는 개인정보 처리에 관한 불만을 거주 국가의 감독 기관에 제기할 권리가 있습니다. 저희에게 먼저 연락하시어 문제를 해결하기를 권장하지만, 직접 감독 기관에 연락하실 수도 있습니다.</p>
+    <p id="s14-p2">EU 감독 기관 목록: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank">European Data Protection Board (EDPB) Member List</a></p>
+  </section>
+
+  <!-- S15 -->
+  <section id="s15">
+    <h2><span class="num">15</span> <span id="s15-title">방침 변경</span></h2>
+    <p id="s15-p1">본 방침은 법령 변경, 서비스 변경 또는 기타 이유로 업데이트될 수 있습니다. 중요한 변경 사항이 있을 경우 앱 내 공지 또는 이 페이지의 "최종 수정일" 업데이트를 통해 알립니다.</p>
+    <p id="s15-p2">변경 후 계속하여 서비스를 이용하시면 변경된 방침에 동의하는 것으로 간주됩니다. 정기적으로 본 페이지를 확인하시기 바랍니다.</p>
+  </section>
+
+  <!-- S16 -->
+  <section id="s16">
+    <h2><span class="num">16</span> <span id="s16-title">문의</span></h2>
+    <p id="s16-p1">개인정보 처리에 관한 문의, 권리 행사 요청 또는 기타 문의사항은 아래 연락처로 문의해 주세요:</p>
+    <p><strong>Puffchip Games</strong><br>
+    <span id="s16-email-label">이메일:</span> <a href="mailto:puffchipgames.dev@gmail.com">puffchipgames.dev@gmail.com</a><br>
+    <span id="s16-response">응답 기간: 영업일 기준 30일 이내</span></p>
+  </section>
+
+  <footer>
+    <p>© 2026 Puffchip Games. <span id="footer-text">All rights reserved.</span></p>
+  </footer>
+
+</div>
+
+<script>
+const KO = {
+  "main-title": "개인정보처리방침",
+  "main-sub": "Brick Shot · Puffchip Games · <span id='updated-date'>최종 수정: 2026년 4월 21일</span>",
+  "toc-label": "목차",
+  "toc1":"개요 및 적용 범위","toc2":"수집하는 정보","toc3":"정보 수집 방법","toc4":"정보 이용 목적","toc5":"처리의 법적 근거 (GDPR)",
+  "toc6":"정보 공유 및 제3자 제공","toc7":"데이터 보유 기간","toc8":"국외 데이터 이전","toc9":"사용자 권리","toc10":"어린이 보호",
+  "toc11":"데이터 보안","toc12":"푸시 알림","toc13":"인앱 결제","toc14":"감독 기관 불만 제기","toc15":"방침 변경","toc16":"문의",
+  "s1-title":"개요 및 적용 범위",
+  "s1-p1":"Puffchip Games("회사", "저희")는 모바일 게임 <strong>Brick Shot</strong>("앱", "서비스")을 개발 및 운영합니다. 본 개인정보처리방침은 서비스 이용 과정에서 수집되는 개인정보를 어떻게 수집, 이용, 공유, 보관하는지를 설명합니다.",
+  "s1-p2":"본 방침은 Google Play를 통해 배포되는 Android 버전에 적용됩니다. 서비스를 이용함으로써 본 방침에 동의하는 것으로 간주됩니다.",
+  "s1-box":"본 방침은 GDPR(EU 일반 개인정보 보호 규정), CCPA(캘리포니아 소비자 개인정보 보호법) 및 대한민국 개인정보 보호법을 고려하여 작성되었습니다.",
+  "s2-title":"수집하는 정보",
+  "s2-intro":"저희는 다음과 같은 정보를 수집합니다. 대부분의 정보는 제3자 서비스(Google AdMob, Firebase)를 통해 자동으로 수집됩니다.",
+  "s2-th1":"데이터 유형","s2-th2":"세부 내용","s2-th3":"수집 주체","s2-th4":"목적",
+  "s2-r1a":"<strong>광고 식별자</strong>","s2-r1b":"Android 광고 ID (GAID)","s2-r1c":"맞춤형 광고 제공",
+  "s2-r2a":"<strong>기기 정보</strong>","s2-r2b":"OS 버전, 기기 모델, 화면 해상도, 제조사","s2-r2c":"광고 최적화, 오류 분석",
+  "s2-r3a":"<strong>네트워크 정보</strong>","s2-r3b":"IP 주소(국가 수준), 연결 유형(Wi-Fi/모바일)","s2-r3c":"광고 지역화",
+  "s2-r4a":"<strong>게임 이용 데이터</strong>","s2-r4b":"레벨 진행 상황, 세션 시간, 이벤트 로그","s2-r4c":"서비스 개선, 분석",
+  "s2-r5a":"<strong>앱 성능 데이터</strong>","s2-r5b":"충돌 로그, 응답 시간","s2-r5c":"버그 수정, 안정성 향상",
+  "s2-note":"※ 저희는 이름, 이메일, 전화번호 등 직접 식별 가능한 개인정보를 직접 수집하지 않습니다.",
+  "s3-title":"정보 수집 방법",
+  "s3-li1":"<strong>자동 수집:</strong> 앱 실행 시 SDK(Firebase, AdMob)가 기기 및 이용 정보를 자동으로 수집합니다.",
+  "s3-li2":"<strong>광고 상호작용:</strong> 광고 클릭 또는 시청 시 AdMob이 상호작용 데이터를 기록합니다.",
+  "s3-li3":"<strong>앱 내 구매:</strong> Google Play 결제 시스템을 통해 거래 정보가 처리됩니다. (결제 정보는 Google이 직접 처리하며, 회사는 접근하지 않습니다.)",
+  "s4-title":"정보 이용 목적",
+  "s4-li1":"<strong>서비스 제공:</strong> 게임 기능 운영 및 사용자 경험 제공",
+  "s4-li2":"<strong>광고 제공:</strong> 관련성 높은 광고 표시 (맞춤형 또는 비맞춤형)",
+  "s4-li3":"<strong>서비스 분석 및 개선:</strong> 이용 패턴 분석, 기능 개선, 버그 수정",
+  "s4-li4":"<strong>사기 및 부정 행위 방지:</strong> 비정상적 사용 패턴 감지 및 차단",
+  "s4-li5":"<strong>법적 의무 이행:</strong> 관련 법령에 따른 기록 보존 및 법적 요청 대응",
+  "s5-title":"처리의 법적 근거",
+  "s5-intro":"EU/EEA 사용자의 개인정보 처리는 다음의 법적 근거에 기반합니다:",
+  "s5-li1":"<strong>동의 (Art. 6(1)(a)):</strong> 앱 첫 실행 시 동의 팝업을 통해 맞춤형 광고(GAID 기반)에 대한 명시적 동의를 수집합니다. 동의는 언제든지 철회할 수 있습니다.",
+  "s5-li2":"<strong>계약 이행 (Art. 6(1)(b)):</strong> 게임 서비스 제공 및 인앱 구매 처리를 위해 필요한 경우.",
+  "s5-li3":"<strong>정당한 이익 (Art. 6(1)(f)):</strong> 서비스 보안 유지, 사기 방지, 비맞춤형 광고 제공, 오류 분석. 이 처리는 사용자의 기본권과 균형을 고려하여 수행됩니다.",
+  "s5-li4":"<strong>법적 의무 이행 (Art. 6(1)(c)):</strong> 관련 법령상 기록 보존 의무.",
+  "s6-title":"정보 공유 및 제3자 제공",
+  "s6-p1":"저희는 다음의 경우를 제외하고 수집한 정보를 제3자와 공유하지 않습니다:",
+  "s6-li1":"<strong>서비스 제공업체:</strong> Google AdMob (광고), Firebase (분석/충돌 보고) — 서비스 운영에 필요한 범위 내에서만 공유",
+  "s6-li2":"<strong>법적 요청:</strong> 법원 명령, 법령에 따른 요청, 법적 권리 보호를 위해 필요한 경우",
+  "s6-li3":"<strong>사업 양도:</strong> 합병, 인수, 자산 매각 시 — 사전에 사용자에게 통지합니다",
+  "s6-third-title":"<strong>제3자 서비스 개인정보처리방침</strong>",
+  "s7-title":"데이터 보유 기간",
+  "s7-intro":"개인정보는 처리 목적이 달성되면 지체 없이 삭제합니다. 제3자 서비스의 보유 기간은 해당 서비스의 정책을 따릅니다:",
+  "s7-th1":"데이터","s7-th2":"보유 기간","s7-th3":"근거",
+  "s7-r1a":"Firebase Analytics 이벤트","s7-r1b":"최대 14개월","s7-r1c":"Google 기본 설정",
+  "s7-r2a":"Firebase Crashlytics 로그","s7-r2b":"90일","s7-r2c":"Google 기본 설정",
+  "s7-r3a":"AdMob 광고 로그","s7-r3b":"최대 60일","s7-r3c":"Google 기본 설정",
+  "s7-r4a":"앱 내 로컬 저장 데이터","s7-r4b":"앱 삭제 시 즉시 삭제","s7-r4c":"기기 내 저장",
+  "s8-title":"국외 데이터 이전",
+  "s8-p1":"Google AdMob 및 Firebase는 미국을 포함한 다수의 국가에 서버를 운영합니다. 따라서 수집된 정보 일부가 EU/EEA 외부로 전송될 수 있습니다.",
+  "s8-p2":"Google은 EU 표준계약조항(Standard Contractual Clauses, SCC)을 통해 적절한 데이터 보호 수준을 보장합니다. 자세한 내용은 <a href='https://policies.google.com/privacy/frameworks' target='_blank'>Google의 데이터 보호 프레임워크</a>를 확인하세요.",
+  "s8-p3":"대한민국에서는 「개인정보 보호법」 제28조의8에 따라 국외 이전 사실을 고지합니다. 이전되는 국가는 미국이며, 이전받는 자는 Google LLC입니다.",
+  "s9-title":"사용자 권리",
+  "s9-intro":"EU/EEA에 거주하는 사용자는 다음의 권리를 갖습니다. 권리 행사는 아래 문의처로 요청하시면 <strong>30일 이내</strong> 응답드립니다:",
+  "s9-li1":"<strong>열람권 (Art. 15):</strong> 수집된 개인정보의 사본 요청",
+  "s9-li2":"<strong>정정권 (Art. 16):</strong> 부정확하거나 불완전한 정보의 수정 요청",
+  "s9-li3":"<strong>삭제권 / 잊힐 권리 (Art. 17):</strong> 특정 조건 하에 개인정보 삭제 요청",
+  "s9-li4":"<strong>처리 제한권 (Art. 18):</strong> 개인정보 처리를 일시적으로 제한하도록 요청",
+  "s9-li5":"<strong>이동권 (Art. 20):</strong> 구조화된 형식으로 개인정보 수령 요청",
+  "s9-li6":"<strong>이의제기권 (Art. 21):</strong> 정당한 이익에 기반한 처리에 대한 이의 제기",
+  "s9-li7":"<strong>동의 철회권:</strong> 언제든지 동의를 철회할 수 있으며, 철회 이전 처리의 적법성에는 영향을 미치지 않습니다.",
+  "s9-box":"동의 철회 방법: 기기 설정 → 개인정보 → 광고 → \"광고 개인화 선택 해제\" 또는 앱 설정 내 광고 동의 재설정 / 또는 이메일 문의",
+  "s10-title":"어린이 보호",
+  "s10-p1":"본 서비스는 만 13세 미만(EU/EEA의 경우 만 16세 미만) 어린이를 대상으로 하지 않습니다. 저희는 어린이로부터 고의로 개인정보를 수집하지 않습니다.",
+  "s10-p2":"만약 보호자께서 자녀가 본 서비스를 이용하고 있으며 개인정보가 수집되었다고 생각하신다면, 즉시 아래 문의처로 연락해 주십시오. 신속하게 해당 정보를 삭제하겠습니다.",
+  "s11-title":"데이터 보안",
+  "s11-p1":"저희는 수집된 정보를 보호하기 위해 업계 표준의 기술적, 관리적 보안 조치를 적용합니다. 제3자 서비스(Google)는 자체적인 보안 인프라를 통해 데이터를 보호합니다.",
+  "s11-p2":"그러나 인터넷을 통한 전송이나 전자 저장은 100% 안전을 보장할 수 없습니다. 보안 취약점을 발견하신 경우 즉시 저희에게 알려주시기 바랍니다.",
+  "s12-title":"푸시 알림",
+  "s12-p1":"본 앱은 현재 푸시 알림을 제공하지 않습니다. 추후 알림 기능이 추가될 경우, 기기의 알림 설정을 통해 언제든지 수신을 거부할 수 있습니다.",
+  "s13-title":"인앱 결제",
+  "s13-p1":"본 앱에서 제공하는 인앱 구매는 Google Play 결제 시스템을 통해 처리됩니다. 신용카드 번호 등 결제 정보는 Google이 직접 처리하며, 회사는 해당 정보에 접근하거나 저장하지 않습니다.",
+  "s13-p2":"구매 내역 및 환불은 Google Play 정책에 따라 처리됩니다.",
+  "s14-title":"감독 기관 불만 제기",
+  "s14-p1":"EU/EEA에 거주하는 사용자는 개인정보 처리에 관한 불만을 거주 국가의 감독 기관에 제기할 권리가 있습니다. 저희에게 먼저 연락하시어 문제를 해결하기를 권장하지만, 직접 감독 기관에 연락하실 수도 있습니다.",
+  "s14-p2":"EU 감독 기관 목록: <a href='https://edpb.europa.eu/about-edpb/about-edpb/members_en' target='_blank'>European Data Protection Board (EDPB) Member List</a>",
+  "s15-title":"방침 변경",
+  "s15-p1":"본 방침은 법령 변경, 서비스 변경 또는 기타 이유로 업데이트될 수 있습니다. 중요한 변경 사항이 있을 경우 앱 내 공지 또는 이 페이지의 \"최종 수정일\" 업데이트를 통해 알립니다.",
+  "s15-p2":"변경 후 계속하여 서비스를 이용하시면 변경된 방침에 동의하는 것으로 간주됩니다. 정기적으로 본 페이지를 확인하시기 바랍니다.",
+  "s16-title":"문의",
+  "s16-p1":"개인정보 처리에 관한 문의, 권리 행사 요청 또는 기타 문의사항은 아래 연락처로 문의해 주세요:",
+  "s16-email-label":"이메일:",
+  "s16-response":"응답 기간: 영업일 기준 30일 이내",
+  "footer-text":"All rights reserved."
+};
+
+const EN = {
+  "main-title": "Privacy Policy",
+  "main-sub": "Brick Shot · Puffchip Games · <span id='updated-date'>Last updated: April 21, 2026</span>",
+  "toc-label": "Table of Contents",
+  "toc1":"Overview & Scope","toc2":"Information We Collect","toc3":"How We Collect Information","toc4":"How We Use Information","toc5":"Legal Basis for Processing (GDPR)",
+  "toc6":"Sharing & Third Parties","toc7":"Data Retention","toc8":"International Transfers","toc9":"Your Rights","toc10":"Children's Privacy",
+  "toc11":"Data Security","toc12":"Push Notifications","toc13":"In-App Purchases","toc14":"Right to Lodge a Complaint","toc15":"Changes to This Policy","toc16":"Contact",
+  "s1-title":"Overview & Scope",
+  "s1-p1":"Puffchip Games (\"Company\", \"we\", \"us\") develops and operates the mobile game <strong>Brick Shot</strong> (\"App\", \"Service\"). This Privacy Policy explains how we collect, use, share, and store personal information in connection with the Service.",
+  "s1-p2":"This policy applies to the Android version distributed via Google Play. By using the Service, you agree to this Privacy Policy.",
+  "s1-box":"This policy has been prepared in consideration of the GDPR (EU General Data Protection Regulation), CCPA (California Consumer Privacy Act), and the Korean Personal Information Protection Act.",
+  "s2-title":"Information We Collect",
+  "s2-intro":"We collect the following information. Most data is collected automatically through third-party services (Google AdMob, Firebase).",
+  "s2-th1":"Data Type","s2-th2":"Details","s2-th3":"Collected By","s2-th4":"Purpose",
+  "s2-r1a":"<strong>Advertising ID</strong>","s2-r1b":"Android Advertising ID (GAID)","s2-r1c":"Personalized advertising",
+  "s2-r2a":"<strong>Device Info</strong>","s2-r2b":"OS version, device model, screen resolution, manufacturer","s2-r2c":"Ad optimization, crash analysis",
+  "s2-r3a":"<strong>Network Info</strong>","s2-r3b":"IP address (country level), connection type (Wi-Fi/mobile)","s2-r3c":"Ad localization",
+  "s2-r4a":"<strong>Gameplay Data</strong>","s2-r4b":"Level progress, session duration, event logs","s2-r4c":"Service improvement, analytics",
+  "s2-r5a":"<strong>App Performance Data</strong>","s2-r5b":"Crash logs, response times","s2-r5c":"Bug fixing, stability improvement",
+  "s2-note":"※ We do not directly collect personally identifiable information such as names, email addresses, or phone numbers.",
+  "s3-title":"How We Collect Information",
+  "s3-li1":"<strong>Automatic collection:</strong> When the app launches, SDKs (Firebase, AdMob) automatically collect device and usage data.",
+  "s3-li2":"<strong>Ad interaction:</strong> AdMob records interaction data when you click or watch ads.",
+  "s3-li3":"<strong>In-app purchases:</strong> Transactions are processed through the Google Play billing system. Payment details are handled directly by Google; we do not access this information.",
+  "s4-title":"How We Use Information",
+  "s4-li1":"<strong>Service delivery:</strong> Operating game features and providing user experience",
+  "s4-li2":"<strong>Advertising:</strong> Displaying relevant ads (personalized or non-personalized)",
+  "s4-li3":"<strong>Analytics & improvement:</strong> Analyzing usage patterns, improving features, fixing bugs",
+  "s4-li4":"<strong>Fraud prevention:</strong> Detecting and blocking abnormal usage patterns",
+  "s4-li5":"<strong>Legal compliance:</strong> Retaining records and responding to legal requests as required by law",
+  "s5-title":"Legal Basis for Processing",
+  "s5-intro":"Processing of personal data for EU/EEA users is based on the following legal grounds:",
+  "s5-li1":"<strong>Consent (Art. 6(1)(a)):</strong> We collect explicit consent for personalized advertising (GAID-based) via a consent dialog on first launch. Consent can be withdrawn at any time.",
+  "s5-li2":"<strong>Performance of a contract (Art. 6(1)(b)):</strong> Where necessary to provide the game service and process in-app purchases.",
+  "s5-li3":"<strong>Legitimate interests (Art. 6(1)(f)):</strong> Maintaining service security, fraud prevention, serving non-personalized ads, crash analysis. This processing is conducted with due regard to user rights.",
+  "s5-li4":"<strong>Legal obligation (Art. 6(1)(c)):</strong> Record retention obligations under applicable law.",
+  "s6-title":"Sharing & Third Parties",
+  "s6-p1":"We do not share collected information with third parties except in the following circumstances:",
+  "s6-li1":"<strong>Service providers:</strong> Google AdMob (advertising), Firebase (analytics/crash reporting) — shared only to the extent necessary for service operation",
+  "s6-li2":"<strong>Legal requests:</strong> Court orders, statutory requirements, or protection of legal rights",
+  "s6-li3":"<strong>Business transfers:</strong> In the event of a merger, acquisition, or asset sale — users will be notified in advance",
+  "s6-third-title":"<strong>Third-Party Privacy Policies</strong>",
+  "s7-title":"Data Retention",
+  "s7-intro":"Personal data is deleted without delay once the processing purpose has been fulfilled. Retention periods for third-party services follow their respective policies:",
+  "s7-th1":"Data","s7-th2":"Retention Period","s7-th3":"Source",
+  "s7-r1a":"Firebase Analytics events","s7-r1b":"Up to 14 months","s7-r1c":"Google default",
+  "s7-r2a":"Firebase Crashlytics logs","s7-r2b":"90 days","s7-r2c":"Google default",
+  "s7-r3a":"AdMob ad logs","s7-r3b":"Up to 60 days","s7-r3c":"Google default",
+  "s7-r4a":"Local on-device data","s7-r4b":"Deleted immediately on uninstall","s7-r4c":"On-device storage",
+  "s8-title":"International Data Transfers",
+  "s8-p1":"Google AdMob and Firebase operate servers in the United States and other countries. As a result, some collected data may be transferred outside the EU/EEA.",
+  "s8-p2":"Google ensures an adequate level of data protection through EU Standard Contractual Clauses (SCCs). For more details, see <a href='https://policies.google.com/privacy/frameworks' target='_blank'>Google's data protection framework</a>.",
+  "s8-p3":"In accordance with Article 28-8 of the Korean Personal Information Protection Act, we disclose that personal data may be transferred to the United States, and the recipient is Google LLC.",
+  "s9-title":"Your Rights",
+  "s9-intro":"If you are located in the EU/EEA, you have the following rights. To exercise them, please contact us at the address below and we will respond within <strong>30 days</strong>:",
+  "s9-li1":"<strong>Right of access (Art. 15):</strong> Request a copy of your personal data",
+  "s9-li2":"<strong>Right to rectification (Art. 16):</strong> Request correction of inaccurate or incomplete data",
+  "s9-li3":"<strong>Right to erasure (Art. 17):</strong> Request deletion of your data under certain conditions",
+  "s9-li4":"<strong>Right to restriction (Art. 18):</strong> Request temporary restriction of certain processing",
+  "s9-li5":"<strong>Right to data portability (Art. 20):</strong> Request your data in a structured format",
+  "s9-li6":"<strong>Right to object (Art. 21):</strong> Object to processing based on legitimate interest",
+  "s9-li7":"<strong>Right to withdraw consent:</strong> You may withdraw consent at any time; withdrawal does not affect the lawfulness of prior processing.",
+  "s9-box":"How to withdraw consent: Device Settings → Privacy → Ads → 'Opt out of Ads Personalization', or reset ad consent within the app settings, or contact us by email.",
+  "s10-title":"Children's Privacy",
+  "s10-p1":"This Service is not directed at children under 13 (or under 16 for EU/EEA users). We do not knowingly collect personal data from children.",
+  "s10-p2":"If a parent or guardian believes their child is using this Service and personal data has been collected, please contact us immediately. We will promptly delete the relevant information.",
+  "s11-title":"Data Security",
+  "s11-p1":"We apply industry-standard technical and administrative security measures to protect collected information. Third-party services (Google) protect data through their own security infrastructure.",
+  "s11-p2":"However, no transmission over the internet or electronic storage is 100% secure. If you discover a security vulnerability, please notify us immediately.",
+  "s12-title":"Push Notifications",
+  "s12-p1":"This app does not currently send push notifications. If a notification feature is added in the future, you will be able to opt out at any time via your device's notification settings.",
+  "s13-title":"In-App Purchases",
+  "s13-p1":"In-app purchases in this app are processed through the Google Play billing system. Payment details such as credit card numbers are handled directly by Google; we do not access or store this information.",
+  "s13-p2":"Purchase history and refunds are handled in accordance with Google Play policies.",
+  "s14-title":"Right to Lodge a Complaint",
+  "s14-p1":"EU/EEA users have the right to lodge a complaint with their local supervisory authority regarding our processing of personal data. We encourage you to contact us first to resolve any issues, but you may also contact your supervisory authority directly.",
+  "s14-p2":"Find your supervisory authority: <a href='https://edpb.europa.eu/about-edpb/about-edpb/members_en' target='_blank'>European Data Protection Board (EDPB) Member List</a>",
+  "s15-title":"Changes to This Policy",
+  "s15-p1":"This policy may be updated due to changes in law, the Service, or other reasons. Material changes will be communicated via in-app notice or by updating the 'Last updated' date on this page.",
+  "s15-p2":"Continued use of the Service after changes constitutes acceptance of the updated policy. We recommend reviewing this page periodically.",
+  "s16-title":"Contact",
+  "s16-p1":"For any privacy-related inquiries, rights requests, or other questions, please contact us at:",
+  "s16-email-label":"Email:",
+  "s16-response":"Response time: within 30 business days",
+  "footer-text":"All rights reserved."
+};
+
+function setLang(lang) {
+  const data = lang === 'ko' ? KO : EN;
+  document.querySelectorAll('.lang-toggle button').forEach((b, i) => {
+    b.classList.toggle('active', (lang === 'ko' && i === 0) || (lang === 'en' && i === 1));
+  });
+  document.documentElement.lang = lang;
+  document.title = lang === 'ko' ? '개인정보처리방침 - Brick Shot' : 'Privacy Policy - Brick Shot';
+  for (const [id, html] of Object.entries(data)) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  }
+}
+</script>
 </body>
 </html>
